@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soccer Club Logo Quiz</title>
+    <style>
+        #additionalNote {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <h1>Soccer Club Logo Quiz</h1>
@@ -14,6 +19,8 @@
     <button onclick="checkAnswer()">Submit</button>
     <p id="result"></p>
     <button onclick="nextQuestion()">Next</button>
+
+    <p id="additionalNote"></p>
 
     <script>
         var clubs = [
@@ -90,6 +97,9 @@
 
         // Initialize the quiz when the page loads
         window.onload = initQuiz;
+
+        // Additional note as specified
+        document.getElementById('additionalNote').innerText = "FC(football club) and CF(club de Fútbol) notation is omitted. Other notations are included.";
     </script>
 </body>
 </html>
