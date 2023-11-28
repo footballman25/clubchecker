@@ -35,7 +35,7 @@
         function displayCurrentClub() {
             var currentClub = clubs[currentClubIndex];
             document.getElementById('clubLogo').src = currentClub.logo;
-            document.getElementById('result').innerHTML = "";
+            document.getElementById('result').innerHTML = ""; // Clear previous result
         }
 
         function checkAnswer() {
@@ -52,24 +52,25 @@
                 } else {
                     resultElement.innerHTML = "Wrong! The correct answer is " + currentClub.name;
                 }
-
-                // Move to the next club or finish if reached the end
-                currentClubIndex++;
-
-                if (currentClubIndex < clubs.length) {
-                    displayCurrentClub();
-                } else {
-                    // Quiz finished, you can add any additional logic here
-                    resultElement.innerHTML += "<br>Quiz finished!";
-                }
-
-                // Clear the answer input
-                document.getElementById('answer').value = "";
             }
         }
 
         function nextQuestion() {
-            // This function is now empty because the logic is handled in checkAnswer
+            var resultElement = document.getElementById('result');
+
+            // Move to the next club or finish if reached the end
+            currentClubIndex++;
+
+            if (currentClubIndex < clubs.length) {
+                // Display the next club
+                displayCurrentClub();
+            } else {
+                // Quiz finished, you can add any additional logic here
+                resultElement.innerHTML = "Quiz finished!";
+            }
+
+            // Clear the answer input
+            document.getElementById('answer').value = "";
         }
 
         // Initialize the quiz when the page loads
