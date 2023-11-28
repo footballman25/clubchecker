@@ -22,6 +22,7 @@
             { name: "バルセロナ", logo: "images/barcelona.png" },
             { name: "マンチェスターシティ", logo: "images/manchestercity.png" },
             { name: "リヴァプール", logo: "images/liverpool.png" },
+            { name: "ミラン", logo: "images/milan.png" },
             // Add more clubs as needed
         ];
 
@@ -35,7 +36,7 @@
         function displayCurrentClub() {
             var currentClub = clubs[currentClubIndex];
             document.getElementById('clubLogo').src = currentClub.logo;
-            document.getElementById('result').innerHTML = ""; // Clear previous result
+            document.getElementById('result').innerHTML = "";
         }
 
         function checkAnswer() {
@@ -52,26 +53,21 @@
                 } else {
                     resultElement.innerHTML = "Wrong! The correct answer is " + currentClub.name;
                 }
+            }
 
-                // Move to the next club or finish if reached the end
+            // Move to the next club or finish if reached the end
+            if (currentClubIndex < clubs.length - 1) {
                 currentClubIndex++;
 
-                if (currentClubIndex < clubs.length) {
-                    // Display the next club
-                    displayCurrentClub();
-                } else {
-                    // Quiz finished, you can add any additional logic here
-                    resultElement.innerHTML += "<br>Quiz finished!";
-                }
-
-                // Clear the answer input
-                document.getElementById('answer').value = "";
+                // Display the next club
+                displayCurrentClub();
+            } else {
+                // Quiz finished, you can add any additional logic here
+                resultElement.innerHTML = "Quiz finished!";
             }
-        }
 
-        function nextQuestion() {
-            // Call checkAnswer function to perform the logic
-            checkAnswer();
+            // Clear the answer input
+            document.getElementById('answer').value = "";
         }
 
         // Initialize the quiz when the page loads
