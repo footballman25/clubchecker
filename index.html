@@ -35,7 +35,7 @@
         }
 
         function checkAnswer() {
-            var userAnswer = document.getElementById('answer').value.toLowerCase();
+            var userAnswer = document.getElementById('answer').value.trim().toLowerCase();
             var currentClub = clubs[currentClubIndex];
             
             var resultElement = document.getElementById('result');
@@ -48,11 +48,11 @@
                 } else {
                     resultElement.innerHTML = "Wrong! The correct answer is " + currentClub.name;
                 }
-            }
 
-            // Move to the next club or reset if reached the end
-            currentClubIndex = (currentClubIndex + 1) % clubs.length;
-            displayCurrentClub();
+                // Move to the next club or reset if reached the end
+                currentClubIndex = (currentClubIndex + 1) % clubs.length;
+                displayCurrentClub();
+            }
         }
 
         // Initialize the quiz when the page loads
