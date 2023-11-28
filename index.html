@@ -54,6 +54,10 @@
                     resultElement.innerHTML = "Wrong! The correct answer is " + currentClub.name;
                 }
             }
+        }
+
+        function nextQuestion() {
+            var resultElement = document.getElementById('result');
 
             // Move to the next club or finish if reached the end
             if (currentClubIndex < clubs.length - 1) {
