@@ -54,8 +54,9 @@
                 }
 
                 // Move to the next club or finish if reached the end
-                if (currentClubIndex < clubs.length - 1) {
-                    currentClubIndex++;
+                currentClubIndex++;
+
+                if (currentClubIndex < clubs.length) {
                     displayCurrentClub();
                 } else {
                     // Quiz finished, you can add any additional logic here
