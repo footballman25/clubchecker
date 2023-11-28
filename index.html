@@ -8,35 +8,50 @@
 </head>
 <body>
     <h1>Soccer Club Logo Quiz</h1>
-    <img id="clubLogo" src="images/manchester_united_logo.jpg" alt="Club Logo to Identify">
+    <img id="clubLogo" src="" alt="Club Logo to Identify">
     <label for="answer">Enter the Club Name:</label>
     <input type="text" id="answer" required>
     <button onclick="checkAnswer()">Submit</button>
     <p id="result"></p>
 
     <script>
+        var clubs = [
+            { name: "マンチェスターユナイテッド", logo: "images/manchesterunited.png" },
+
+            { name: "レアルマドリード", logo: "images/realmadrid.png" },
+            // Add more clubs as needed
+        ];
+
+        var currentClubIndex = 0;
+
+        function initQuiz() {
+            currentClubIndex = 0;
+            displayCurrentClub();
+        }
+
+        function displayCurrentClub() {
+            var currentClub = clubs[currentClubIndex];
+            document.getElementById('clubLogo').src = currentClub.logo;
+            document.getElementById('result').innerHTML = "";
+        }
+
         function checkAnswer() {
             var userAnswer = document.getElementById('answer').value.toLowerCase();
-            var correctAnswer = getCorrectAnswer();
-
-            var resultElement = document.getElementById('result');
-            if (userAnswer === correctAnswer) {
-                resultElement.innerHTML = "Correct!";
+            var currentClub = clubs[currentClubIndex];
+            
+            if (userAnswer === currentClub.name.toLowerCase()) {
+                document.getElementById('result').innerHTML = "Correct!";
             } else {
-                resultElement.innerHTML = "Wrong! The correct answer is " + correctAnswer;
+                document.getElementById('result').innerHTML = "Wrong! The correct answer is " + currentClub.name;
             }
+
+            // Move to the next club or reset if reached the end
+            currentClubIndex = (currentClubIndex + 1) % clubs.length;
+            displayCurrentClub();
         }
 
-        function getCorrectAnswer() {
-            // Logic to determine the correct answer based on the displayed logo
-            var displayedLogoPath = document.getElementById('clubLogo').getAttribute('src');
-            if (displayedLogoPath.includes('manchester_united_logo')) {
-                return "Manchester United";
-            } else {
-                // Add logic for other clubs as needed
-                return "Unknown Club";
-            }
-        }
+        // Initialize the quiz when the page loads
+        window.onload = initQuiz;
     </script>
 </body>
 </html>
