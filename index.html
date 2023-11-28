@@ -17,7 +17,6 @@
     <script>
         var clubs = [
             { name: "マンチェスターユナイテッド", logo: "images/manchesterunited.png" },
-            { name: "レアルマドリード", logo: "images/realmadrid.png" },
             // Add more clubs as needed
         ];
 
@@ -39,7 +38,10 @@
             var currentClub = clubs[currentClubIndex];
             
             var resultElement = document.getElementById('result');
-            if (userAnswer === currentClub.name.toLowerCase()) {
+
+            if (!userAnswer) {
+                resultElement.innerHTML = "Please enter an answer.";
+            } else if (userAnswer === currentClub.name.toLowerCase()) {
                 resultElement.innerHTML = "Correct!";
             } else {
                 resultElement.innerHTML = "Wrong! The correct answer is " + currentClub.name;
