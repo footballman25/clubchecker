@@ -55,9 +55,9 @@
             }
 
             // Move to the next club or finish if reached the end
-            currentClubIndex++;
+            if (currentClubIndex < clubs.length - 1) {
+                currentClubIndex++;
 
-            if (currentClubIndex < clubs.length) {
                 // Display the next club
                 displayCurrentClub();
             } else {
@@ -71,6 +71,10 @@
 
         // Initialize the quiz when the page loads
         window.onload = initQuiz;
+    </script>
+</body>
+</html>
+
     </script>
 </body>
 </html>
