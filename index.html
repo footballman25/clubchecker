@@ -69,12 +69,32 @@
             document.getElementById('answer').value = "";
         }
 
+        function nextQuestion() {
+            var resultElement = document.getElementById('result');
+
+            console.log("Before: currentClubIndex = " + currentClubIndex);
+
+            // Move to the next club or finish if reached the end
+            if (currentClubIndex < clubs.length - 1) {
+                currentClubIndex++;
+
+                console.log("After: currentClubIndex = " + currentClubIndex);
+
+                // Display the next club
+                displayCurrentClub();
+                resultElement.innerHTML = ""; // Clear previous result
+            } else {
+                // Quiz finished, you can add any additional logic here
+                resultElement.innerHTML = "Quiz finished!";
+            }
+
+            // Clear the answer input
+            document.getElementById('answer').value = "";
+        }
+
         // Initialize the quiz when the page loads
         window.onload = initQuiz;
     </script>
 </body>
 </html>
 
-    </script>
-</body>
-</html>
