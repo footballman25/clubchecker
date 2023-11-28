@@ -13,6 +13,7 @@
     <input type="text" id="answer" required>
     <button onclick="checkAnswer()">Submit</button>
     <p id="result"></p>
+    <button onclick="nextQuestion()">Next</button>
 
     <script>
         var clubs = [
@@ -48,18 +49,26 @@
                 } else {
                     resultElement.innerHTML = "Wrong! The correct answer is " + currentClub.name;
                 }
-
-                // Move to the next club or finish if reached the end
-                currentClubIndex++;
-
-                if (currentClubIndex < clubs.length) {
-                    // Display the next club
-                    displayCurrentClub();
-                } else {
-                    // Quiz finished, you can add any additional logic here
-                    resultElement.innerHTML = "Quiz finished!";
-                }
             }
+        }
+
+        function nextQuestion() {
+            var resultElement = document.getElementById('result');
+
+            // Move to the next club or finish if reached the end
+            currentClubIndex++;
+
+            if (currentClubIndex < clubs.length) {
+                // Display the next club
+                displayCurrentClub();
+                resultElement.innerHTML = ""; // Clear previous result
+            } else {
+                // Quiz finished, you can add any additional logic here
+                resultElement.innerHTML = "Quiz finished!";
+            }
+
+            // Clear the answer input
+            document.getElementById('answer').value = "";
         }
 
         // Initialize the quiz when the page loads
@@ -67,4 +76,3 @@
     </script>
 </body>
 </html>
-
