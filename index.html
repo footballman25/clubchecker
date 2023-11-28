@@ -53,20 +53,6 @@
                     resultElement.innerHTML = "Wrong! The correct answer is " + currentClub.name;
                 }
             }
-
-            // Move to the next club or finish if reached the end
-            if (currentClubIndex < clubs.length - 1) {
-                currentClubIndex++;
-
-                // Display the next club
-                displayCurrentClub();
-            } else {
-                // Quiz finished, you can add any additional logic here
-                resultElement.innerHTML = "Quiz finished!";
-            }
-
-            // Clear the answer input
-            document.getElementById('answer').value = "";
         }
 
         function nextQuestion() {
@@ -97,4 +83,3 @@
     </script>
 </body>
 </html>
-
