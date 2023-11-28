@@ -17,7 +17,6 @@
     <script>
         var clubs = [
             { name: "マンチェスターユナイテッド", logo: "images/manchesterunited.png" },
-            { name: "レアルマドリード", logo: "images/realmadrid.png" },
             // Add more clubs as needed
         ];
 
@@ -42,15 +41,17 @@
 
             if (!userAnswer) {
                 resultElement.innerHTML = "Please enter an answer.";
-            } else if (userAnswer === currentClub.name.toLowerCase()) {
-                resultElement.innerHTML = "Correct!";
             } else {
-                resultElement.innerHTML = "Wrong! The correct answer is " + currentClub.name;
-            }
+                if (userAnswer === currentClub.name.toLowerCase()) {
+                    resultElement.innerHTML = "Correct!";
+                } else {
+                    resultElement.innerHTML = "Wrong! The correct answer is " + currentClub.name;
+                }
 
-            // Move to the next club or reset if reached the end
-            currentClubIndex = (currentClubIndex + 1) % clubs.length;
-            displayCurrentClub();
+                // Move to the next club or reset if reached the end
+                currentClubIndex = (currentClubIndex + 1) % clubs.length;
+                displayCurrentClub();
+            }
         }
 
         // Initialize the quiz when the page loads
