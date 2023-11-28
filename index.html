@@ -49,9 +49,16 @@
                     resultElement.innerHTML = "Wrong! The correct answer is " + currentClub.name;
                 }
 
-                // Move to the next club or reset if reached the end
-                currentClubIndex = (currentClubIndex + 1) % clubs.length;
-                displayCurrentClub();
+                // Move to the next club or finish if reached the end
+                currentClubIndex++;
+
+                if (currentClubIndex < clubs.length) {
+                    // Display the next club
+                    displayCurrentClub();
+                } else {
+                    // Quiz finished, you can add any additional logic here
+                    resultElement.innerHTML = "Quiz finished!";
+                }
             }
         }
 
@@ -60,3 +67,4 @@
     </script>
 </body>
 </html>
+
