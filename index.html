@@ -52,25 +52,26 @@
                 } else {
                     resultElement.innerHTML = "Wrong! The correct answer is " + currentClub.name;
                 }
+
+                // Move to the next club or finish if reached the end
+                currentClubIndex++;
+
+                if (currentClubIndex < clubs.length) {
+                    // Display the next club
+                    displayCurrentClub();
+                } else {
+                    // Quiz finished, you can add any additional logic here
+                    resultElement.innerHTML += "<br>Quiz finished!";
+                }
+
+                // Clear the answer input
+                document.getElementById('answer').value = "";
             }
         }
 
         function nextQuestion() {
-            var resultElement = document.getElementById('result');
-
-            // Move to the next club or finish if reached the end
-            currentClubIndex++;
-
-            if (currentClubIndex < clubs.length) {
-                // Display the next club
-                displayCurrentClub();
-            } else {
-                // Quiz finished, you can add any additional logic here
-                resultElement.innerHTML = "Quiz finished!";
-            }
-
-            // Clear the answer input
-            document.getElementById('answer').value = "";
+            // Call checkAnswer function to perform the logic
+            checkAnswer();
         }
 
         // Initialize the quiz when the page loads
