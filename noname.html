@@ -51,15 +51,23 @@
             { name: "鹿島アントラーズ", logo: "images/kashima.png"},
             { name: "柏レイソル", logo: "images/reysol-bl.png"},
             { name: "サンフレッチェ広島", logo: "images/hiroshima-bl.png"},
-            { name: "ガンバ大阪", logo: "images/gamba.png"},
+            { name: "ガンバ大阪", logo: "images/gamba.png"},   
             // Add more clubs as needed
         ];
 
         var currentClubIndex = 0;
 
         function initQuiz() {
-            currentClubIndex = 0;
+            shuffleClubs();
             displayCurrentClub();
+        }
+
+        function shuffleClubs() {
+            // Fisher-Yates shuffle algorithm
+            for (let i = clubs.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [clubs[i], clubs[j]] = [clubs[j], clubs[i]];
+            }
         }
 
         function displayCurrentClub() {
