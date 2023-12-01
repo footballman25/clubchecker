@@ -1,0 +1,113 @@
+<!-- renshu.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soccer Club Logo Quiz</title>
+    <style>
+        #additionalNote {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Soccer Club Logo Quiz</h1>
+    <img id="clubLogo" src="" alt="Club Logo to Identify">
+    <label for="answer">Enter the Club Name:</label>
+    <input type="text" id="answer" required>
+    <button onclick="checkAnswer()">Submit</button>
+    <p id="result"></p>
+    <button onclick="nextQuestion()">Next</button>
+
+    <p id="additionalNote"></p>
+
+    <script>
+        var clubs = [
+            { name: "マンチェスターユナイテッド", logo: "images/manchesterunited.png" },
+            { name: "レアルマドリード", logo: "images/realmadrid.png" },
+            { name: "バルセロナ", logo: "images/barcelona.png" },
+            { name: "マンチェスターシティ", logo: "images/manchestercity.png" },
+            { name: "リヴァプール", logo: "images/liverpool.png" },
+            { name: "ACミラン", logo: "images/milan.png" },
+            { name: "パリサンジェルマン", logo: "images/parissaintgerman.png"},
+            { name: "バイエルンミュンヘン", logo: "images/bayernmunchen.png"},
+            { name: "チェルシー", logo: "images/chelsea.png"},
+            { name: "インテルナツィオナーレミラノ", logo: "images/inter.png"},
+            { name: "RBライプツィヒ", logo: "images/leipzig.png"},
+            { name: "ASローマ", logo: "images/roma.png"},
+            { name: "湘南ベルマーレ", logo: "images/shonanbellmare.png"},
+            { name: "川崎フロンターレ", logo: "images/kawasakifrontale.png"},
+            { name: "浦和レッドダイヤモンズ", logo: "images/urawareds.png"},
+            { name: "ユベントス", logo: "images/juventus.png"},
+            { name: "セビージャ", logo: "images/sevilla.png"},
+            { name: "ボルシアドルトムント", logo: "images/borussiadortmund.png"},
+            { name: "アトレティコマドリード", logo: "images/atleticomadrid.png"},
+            { name: "SSCナポリ", logo: "images/napoli.png"},
+            { name: "SLベンフィカ", logo: "images/benfica.png"},
+            { name: "ビジャレアル", logo: "images/villarreal.png"},
+            { name: "バイヤーレヴァークーゼン", logo: "images/leverkusen.png"},
+            { name: "ポルト", logo: "images/port.png"},
+            { name: "鹿島アントラーズ", logo: "images/kashima.png"},
+            { name: "柏レイソル", logo: "images/kashiwareysol.png"},
+            { name: "サンフレッチェ広島", logo: "images/hiroshima.png"},
+            { name: "ガンバ大阪", logo: "images/gamba.png"},
+            // Add more clubs as needed
+        ];
+
+        var currentClubIndex = 0;
+
+        function initQuiz() {
+            currentClubIndex = 0;
+            displayCurrentClub();
+        }
+
+        function displayCurrentClub() {
+            var currentClub = clubs[currentClubIndex];
+            document.getElementById('clubLogo').src = currentClub.logo;
+            document.getElementById('result').innerHTML = "";
+        }
+
+        function checkAnswer() {
+            var userAnswer = document.getElementById('answer').value.trim().toLowerCase();
+            var currentClub = clubs[currentClubIndex];
+            
+            var resultElement = document.getElementById('result');
+
+            if (!userAnswer) {
+                resultElement.innerHTML = "Please enter an answer.";
+            } else {
+                if (userAnswer === currentClub.name.toLowerCase()) {
+                    resultElement.innerHTML = "Correct!";
+                } else {
+                    resultElement.innerHTML = "Wrong! The correct answer is " + currentClub.name;
+                }
+            }
+        }
+
+        function nextQuestion() {
+            var resultElement = document.getElementById('result');
+
+            // Move to the next club or finish if reached the end
+            if (currentClubIndex < clubs.length - 1) {
+                currentClubIndex++;
+
+                // Display the next club
+                displayCurrentClub();
+            } else {
+                // Quiz finished, you can add any additional logic here
+                resultElement.innerHTML = "Quiz finished!";
+            }
+
+            // Clear the answer input
+            document.getElementById('answer').value = "";
+        }
+
+        // Initialize the quiz when the page loads
+        window.onload = initQuiz;
+
+        // Additional note as specified
+        document.getElementById('additionalNote').innerText = "FC(football club) and CF(club de Fútbol) notation is omitted. Other notations are included.";
+    </script>
+</body>
+</html>
